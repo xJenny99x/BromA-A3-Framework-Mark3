@@ -33,11 +33,30 @@ if (!isDedicated) then {
 
 		waitUntil {!isNull player};
                 
-		while {true} do {                 
-                        
-			scopeName "loop";
-			_sleep = 10;
+		brm_setup_pfh = [{
+            
+			_id        = _this select 0;
+			_args      = _this select 1;
 
+			_shape = "rectangle";
+			_text  = "";
+
+			_pos       = _args select 0;
+			_xDistance = _args select 1;
+			_yDistance = _args select 2;
+			_theta     = _args select 3;
+					
+			if (count _args > 4) then {
+				_shape   = _args select 4;
+				_text    = _args select 5;
+			} else {
+				// old syntax
+			};
+			_cos = cos(_theta);
+			_sin = sin(_theta);
+			_rCos = cos(_theta * -1);
+			_rSin = sin(_theta * -1);
+			_sleep = 10;
 			_disabled = false; 
 			if (!isNil "sandi_barrier_disabled") then { 
                             if (sandi_barrier_disabled) then { 
@@ -109,11 +128,11 @@ if (!isDedicated) then {
 
 			} else {
 				if (_state == 0) then { // delete barrier
-					breakOut "loop";
+					[brm_timeLimit_pfh] call CBA_fnc_removePerFrameHandler;
 				};
 			};
 			sleep _sleep;
-		};
+		}, 1, [_id, _args]] call CBA_fnc_addPerFrameHandler;
 
 	};
 	_id // return 
