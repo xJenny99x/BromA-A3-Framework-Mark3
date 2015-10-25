@@ -83,7 +83,6 @@ if (_unitNumber != "") then { _unitNumber = _unitNumber + " " };
 
 _rosterAlias = format ["%1 %2%3%4", _group, _groupNumber, _unitNumber, _role];
 
-(group _unit) setGroupId [_groupName];
-[[(group _unit), _groupName],"BRM_fnc_setGrpIDGlobal",true,true] call BIS_fnc_MP;
+(group _unit) setGroupIdGlobal [_groupName];
 
 _unit setVariable ["rosterAlias", _rosterAlias, true];
