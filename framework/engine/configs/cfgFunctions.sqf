@@ -23,8 +23,6 @@ class BRM {
         class handleScore{};
         class removeJIP{};
         class setAlias{};
-        class setGrpIDGlobal;
-        class setHitFace{};
         class defineGroups{postInit = 1;};
     };
     class misc {
