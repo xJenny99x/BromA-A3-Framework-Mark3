@@ -61,6 +61,6 @@ sleep 3;
     if (isServer) then { sleep 3 };
     
     // Ends the mission to all players, taking in account winner status.
-    [_ending, (mission_ending_personal select 0), true] spawn BIS_fnc_endMission;
+    [_ending, (mission_ending_personal select 0), false] spawn BIS_fnc_endMission;
     
 }, _this select 0] call CBA_fnc_globalExecute;
