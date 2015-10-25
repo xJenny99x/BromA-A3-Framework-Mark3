@@ -23,7 +23,7 @@ _validSides = [west, east, resistance, civilian];
     private["_groupIndex"];
     
     _leader = objNull;
-    { if (isFormationLeader _x) then { _leader = _x } } forEach (units _x);
+    { if (isFormationLeader _x) then { _leader = _x }; true } count (units _x);
     _side = (side _leader);
     _leaderstr = str _leader;    
     _groupIndex = 0;
@@ -71,7 +71,8 @@ _validSides = [west, east, resistance, civilian];
             case(_side == CIVILIAN): { mission_valid_groups_CIV pushBack (_push + [(count mission_valid_groups_CIV) + 1]) };
         };
     };
-} forEach allGroups;
+	true
+} count allGroups;
 
 publicVariable "mission_valid_groups_name_BLU";
 publicVariable "mission_valid_groups_name_OP";
@@ -89,7 +90,8 @@ _formatChannel = {
     {
         _add = format ["%1 - ch. %2<br/>",(_x select 0),(_x select 2)];
         _ret = _ret + _add;
-    } forEach _groups;
+		true
+    } count _groups;
     _ret
 };
 
@@ -99,7 +101,8 @@ _formatFreq = {
     {
         _add = format ["%1 - FREQ: %2<br/>",(_x select 0),(_x select 1)];
         _ret = _ret + _add;
-    } forEach _groups;
+		true
+    } count _groups;
     _ret
 };
 
