@@ -48,7 +48,7 @@ if (mission_enable_side_c) then {
 
 // Formats a player's final score. =============================================
 
-_personalScore = format ["PERSONAL SCORE: %1 kills and %2 deaths. ", player getVariable ["unit_score",0], player getVariable ["unit_deaths",0]];
+_personalScore = format ["PERSONAL SCORE: %1 kills and %2 deaths. ", (score player), player getVariable ["unit_deaths",0]];
 
 _endingScreen = format [
 // =============================================================================
@@ -71,7 +71,7 @@ _endingScreen = format [
 // it below, it'll become %x, x being the current number of variables +1.
 
 //    %1       %2        %3             %4                %5                %6             %7
-    _title, _reason, side_a_name, mission_dead_side_a, side_b_name, mission_dead_side_b, _thirdSideStats, _personalScore, _time];  
+    _title, _reason, side_a_name, (scoreSide side_b_side), side_b_name, (scoreSide side_a_side), _thirdSideStats, _personalScore, _time];  
 // =============================================================================
 
 // =============================================================================
@@ -94,4 +94,3 @@ titleText [_endingScreen, "BLACK"];
 
 sleep _displayTime;
 
-titleText [" ", "PLAIN DOWN", 2];
