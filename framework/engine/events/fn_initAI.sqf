@@ -60,7 +60,6 @@ if (!_initialized) then {
 
     // Adds the relevant Event Handlers. =======================================
     
-    _unit addEventHandler ["Hit", BRM_fnc_setHitFace];
     _unit addEventHandler ["Killed", BRM_fnc_onAIKilled];
     
     // Adds the Civilian Casualty Cap EHs. =====================================
