@@ -23,4 +23,4 @@ RETURNS:
 ================================================================================
 */
 
-(_this select 0) setGroupId [_this select 1];
+(_this select 0) setGroupIdGlobal [_this select 1];
