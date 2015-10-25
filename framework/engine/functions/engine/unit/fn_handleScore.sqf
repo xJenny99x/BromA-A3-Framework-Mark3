@@ -26,8 +26,12 @@ RETURNS:
 _unit = _this select 0;
 _killer = _this select 1;
 
+
 _side = _unit getVariable ["unit_side", side _unit];
 _sideKiller = _killer getVariable ["unit_side", side _killer];
+
+
+
 
 switch (_side) do {
     case WEST: { mission_dead_west = mission_dead_west + 1; publicVariable "mission_dead_west" };
@@ -53,15 +57,14 @@ _findIndex = {
     };
     _return
 };
-
 if ([_side, _sideKiller] call BIS_fnc_areFriendly) then {
     _index = [mission_unit_score, name _killer] call _findIndex;
     mission_unit_score set [_index, [name _killer, _sideKiller, _killerScore - 1]];
     publicVariable "mission_unit_score";
-    _killer setVariable ["unit_score", _killerScore - 1, true];
+    _killer setVariable ["unit_score", (_killerScore - 1), true];
 } else {
     _index = [mission_unit_score, name _killer] call _findIndex;
     mission_unit_score set [_index, [name _killer, _sideKiller, _killerScore + 1]];
     publicVariable "mission_unit_score";
-    _killer setVariable ["unit_score", _killerScore + 1, true];
+    _killer setVariable ["unit_score", (_killerScore + 1), true];
 };
