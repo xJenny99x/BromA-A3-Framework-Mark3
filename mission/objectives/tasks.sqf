@@ -65,7 +65,10 @@ side_a_side,
 "There's a Fennek lying close. I don't like it. Destroy it!"],
 ["(true)","(not alive car1)"], 1, ["", "", ""]] spawn BRM_fnc_newTask;
 // =============================================================================
-
-[] spawn BRM_fnc_checkTasks;
+//
+a_extracting = false;
+b_extracting = false;
+c_extracting = false;
+brm_task_pfh = [{call BRM_fnc_checkTasks}, 5] call CBA_fnc_addPerFrameHandler;
 
 true
